@@ -1,0 +1,51 @@
+<% if notice.present? %>
+  <div class="alert alert-success" role="alert" style="width: 500px; postion:absolute; left: 525px">
+    <%= notice %>
+  </div>
+<% end %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+    
+    </div>
+    <div class="col-sm">
+      <h1 class="postPageTitl buttonSpace wideButton">Posts</h1>
+      <%= link_to "New post", new_post_path, class: "btn btn-primary buttonSpace wideButton" %> <br>
+    </div>
+    <div class="col-sm">
+
+    </div>
+  </div>
+</div>
+
+<div class="container" style="height:90% width:90%">
+  <% @posts.in_groups_of(3) do |posts| %>
+    <div class="row" id="posts">
+      <% posts.each do |post| %>
+        <% if post.present? %>
+          <div class="<%= post.color %> col-sm buttonSpace">
+            <%= render Post.find(post['id']) %>
+            <p>
+              <%= link_to "Show this post", post, class: "btn btn-secondary buttonSpace wideButton" %>
+            </p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+    
+    </div>
+    <div class="col-sm">
+      <%= link_to "New post", new_post_path, class: "btn btn-primary buttonSpace wideButton" %> <br> 
+    </div>
+    <div class="col-sm">
+
+    </div>
+  </div>
+</div>

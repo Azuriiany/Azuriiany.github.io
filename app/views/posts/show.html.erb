@@ -1,0 +1,41 @@
+<% if notice.present? %>
+  <div class="alert alert-success" role="alert" style="width: 500px; postion:absolute; left: 525px">
+    <%= notice %>
+  </div>
+<% end %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+
+    </div>
+    <div class="col-sm" style="max-width: 100%">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">
+
+          </div>
+          <div class="col-sm">
+            <div class="<%= @post.color %>">
+              <%= render @post %> <br>
+              <% if @post.owner == current_user&.email %>
+                <p> 
+                  <%= link_to "Edit this post", edit_post_path(@post), class: "btn btn-primary buttonSpace wideButton" %> <br>
+                  <%= button_to "Destroy this post", @post, method: :delete, class: "btn btn-danger buttonSpace wideButton" %> <br>
+                </p>
+              <% end %>
+            </div>
+            <%= link_to "Back to posts", posts_path, class: "btn btn-secondary buttonSpace wideButton" %> <br>
+          </div>
+          <div class="col-sm">
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm">
+
+    </div>
+  </div>
+</div>
+

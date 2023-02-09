@@ -1,0 +1,57 @@
+<%= form_with(model: post) do |form| %>
+  <% if post.errors.any? %>
+    <div style="color: red">
+      <div class="alert alert-danger" role="alert">
+        <%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:
+        <% post.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="<%= form.object.color.present? ? form.object.color : "alert alert-secondary" %>" id="custom-form">
+
+    <div class="form-group">
+      <% post.owner = current_user.email %>
+      <%= form.hidden_field :owner, value: current_user.email %>
+      <h1 class="middleTitle"> Owner: <%= form.label post.owner.split('@')[0] %> </h1>   
+    </div>
+
+    <div class="form-group">
+      <%= form.label :title, style: "display: block" %>
+      <%= form.text_field :title, class: "form-control", placeholder: "Put your title here !", maxlength:40 %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :content, style: "display: block" %>
+      <%= form.text_area :body, class: "form-control", id:"summernote", placeholder: "Then put your blog here !" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :tags, style: "display: block" %>
+      <%= form.text_field :tags, class: "form-control", placeholder: "Create your tags ! (Separed by an ',' without any spaces.)", maxlength:50 %>
+    
+    <div class="form-group">
+      <%= form.label :post_color, style: "display: block", class:"spaceUp " %>
+      <%= form.select(:color, options_for_select([['Gray', 'alert alert-secondary'], ['Blue', 'alert alert-primary'], ['Green', 'alert alert-success'], ['Yellow', 'alert alert-warning'], ['Red', 'alert alert-danger']], form.object.color), {}, {class: "form-control"}) %>
+      </select>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm">
+
+        </div>
+        <div class="col-sm">
+          <%= form.submit form.object.new_record? ? 'Create post' : 'Edit post', :class => 'btn btn-success buttonSpace wideButton' %>
+        </div>
+        <div class="col-sm">
+
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+

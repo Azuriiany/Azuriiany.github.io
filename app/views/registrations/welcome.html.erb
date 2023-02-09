@@ -1,0 +1,29 @@
+<!-- app/views/home/sign_up.html.erb -->
+<% if notice.present? %>
+  <div class="alert alert-success" role="alert" style="width: 500px; postion:absolute; left: 525px">
+    <%= notice %>
+  </div>
+<% end %>
+
+<div class="mainContent">
+  <div class="grid">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm">
+        
+        </div>
+        <div class="col-sm"><br><br><br><br><br><br><br><br><br>
+          <div class="alert alert-secondary buttonSpace"> 
+            <h1 class="largeHeader middleTitle spaceUp">Welcome <%= @user.email.split('@')[0] %></h1>
+            <h4 class="middleTitle spaceUp">You can now create posts, edit, and delete them !</h4>
+            <h4 class="middleTitle spaceUp">You can <%= link_to "go to the current posts here", posts_path, class: "btn-link" %> ! </h4>
+          </div>
+        </div>
+        <div class="col-sm">
+        
+        </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- end grid -->
+</div><!-- end mainContent -->

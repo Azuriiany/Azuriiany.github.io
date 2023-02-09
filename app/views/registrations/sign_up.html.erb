@@ -1,0 +1,47 @@
+<!-- app/views/home/sign_up.html.erb -->
+<% if notice.present? %>
+  <div class="alert alert-warning" role="alert" style="width: 500px; postion:absolute; left: 525px">
+    <%= notice %>
+  </div>
+<% end %>
+
+<div class="mainContent">
+  <div class="grid">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm">
+
+        </div>
+        <div class="col-sm">
+          <h1 class="middleTitle">Sign up</h1> <br>
+          <p class="centeredDescription col_4 middleTitle">Already signed up? You can <%= link_to "log in here", sign_in_path, class: "btn-link" %> </p> <br>
+            <div class="alert alert-secondary bubbleSp">
+              <div class="centered_col middleTitle">
+                <%= form_for @user, as: :user, url: create_path, method: :post do |f| %>
+                <%= f.label :email, "Email Address", class:"buttonSpace" %>
+                <%= f.text_field :email, class: "shortInput", class:"form-control middleTitle" %> <br />
+
+                <%= f.label :password, class:"buttonSpace" %>
+                <%= f.password_field :password, class: "shortInput", class:"form-control middleTitle" %> <br />
+
+                <%= f.label :password_confirmation, "Confirm Password", class:"buttonSpace" %>
+                <%= f.password_field :password_confirmation, class: "shortInput", class:"form-control middleTitle" %> <br />
+
+                <%= f.submit "Create account", class: "button createAccount", class:"buttonSpace wideButton btn btn-success" %>
+              <% end %>
+
+            </div> <!-- end centered_col contact form -->
+
+            <div class="centered_col">
+            </div>
+
+          </div>
+        </div>
+        <div class="col-sm">
+        
+        </div>
+      </div>
+     </div>
+    </div> 
+  </div> <!-- end grid -->
+</div> <!-- end mainContent -->

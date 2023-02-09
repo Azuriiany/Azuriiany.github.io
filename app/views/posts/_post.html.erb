@@ -1,0 +1,31 @@
+
+<h5>
+  <div id="<%= dom_id post %>" class="buttonSpace">
+    <p>
+      <% post.tags&.split(',')&.each do |tag| %>
+        <% if(tag.include? "/g") %>
+          <span class="badge alert-success"><%= tag.chop.chop %></span>
+        <% elsif(tag.include? "/r")%>
+          <span class="badge alert-danger"><%= tag.chop.chop %></span>
+        <% elsif(tag.include? "/y") %>
+          <span class="badge alert-warning"><%= tag.chop.chop %></span>
+        <% elsif(tag.include? "/b") %>
+          <span class="badge alert-info"><%= tag.chop.chop %></span>
+        <% else %>
+          <span class="badge badge-primary"><%= tag %></span>
+        <% end %>
+      <% end %>
+    </p>
+    <p>
+      <strong>Title:</strong>
+      <%= post.title %>
+    </p>
+    <p>
+      Created the <%= post.created_at.to_formatted_s(:short) %> by <%= post.owner.split('@')[0] %>
+    <p>
+    <p>
+      <strong>Content:</strong>
+      <%= post.body.html_safe %>
+    </p>
+  </div>
+</h5>

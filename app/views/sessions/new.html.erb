@@ -1,0 +1,30 @@
+<% if notice.present? %>
+  <div class="alert alert-warning" role="alert" style="width: 500px; postion:absolute; left: 525px">
+    <%= notice %>
+  </div>
+<% end %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+
+    </div>
+    <div class="col-sm">
+      <h1 id="middleTitle2">Log in</h1> <br>
+      <div class="alert alert-secondary bubbleSp">
+        <%= form_with url: sign_in_path do |f| %>
+          <%= f.label :email, "Email Address", class:"buttonSpace middleTitle", id:"middleTitle" %>
+          <%= f.text_field :email, class: "form-control middleTitle" %> <br/>
+
+          <%= f.label :password, class:"buttonSpace middleTitle" %>
+          <%= f.password_field :password, class: "form-control middleTitle" %> <br/> <br>
+
+          <%= f.submit "Log in", class: "btn btn-success wideButton", id:"middleTitle" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-sm">
+    </div> 
+  </div>
+</div>
+
